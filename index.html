@@ -738,6 +738,267 @@
     }
   }
 
+  /* ============ TESTIMONIALS ============ */
+  .testimonials {
+    padding: 140px 40px 160px;
+    background: var(--bone);
+    position: relative;
+    overflow: hidden;
+  }
+  .testimonials::before {
+    content: 'kind words ✦ kind words ✦ kind words ✦ kind words ✦ kind words ✦';
+    position: absolute;
+    top: 60px; left: 0; right: 0;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(80px, 12vw, 200px);
+    color: rgba(15,42,29,0.04);
+    white-space: nowrap;
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.04em;
+  }
+  .testimonials-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .testimonials-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 70px;
+  }
+  .rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--moss);
+    color: var(--bone);
+    padding: 18px 24px;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px -10px rgba(8,23,16,0.2);
+  }
+  .rating-stars {
+    display: flex;
+    gap: 2px;
+    color: var(--lime);
+    font-size: 18px;
+  }
+  .rating-stars span {
+    animation: starGlow 2s ease-in-out infinite;
+  }
+  .rating-stars span:nth-child(2) { animation-delay: 0.15s; }
+  .rating-stars span:nth-child(3) { animation-delay: 0.3s; }
+  .rating-stars span:nth-child(4) { animation-delay: 0.45s; }
+  .rating-stars span:nth-child(5) { animation-delay: 0.6s; }
+  @keyframes starGlow {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 transparent); }
+    50% { transform: scale(1.15); filter: drop-shadow(0 0 8px var(--lime)); }
+  }
+  .rating-text {
+    line-height: 1.2;
+  }
+  .rating-num {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 500;
+    display: block;
+  }
+  .rating-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.6;
+    margin-top: 2px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+
+  .testimonial {
+    background: var(--bone-warm);
+    border-radius: 24px;
+    padding: 36px 32px;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
+    border: 1px solid rgba(15,42,29,0.06);
+    overflow: hidden;
+  }
+  .testimonial:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: 0 30px 60px -15px rgba(8,23,16,0.2);
+    border-color: var(--lime);
+  }
+  .testimonial::before {
+    content: '"';
+    position: absolute;
+    top: -20px; right: 20px;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 140px;
+    color: var(--lime);
+    opacity: 0.4;
+    line-height: 1;
+    transition: all 0.5s;
+    pointer-events: none;
+  }
+  .testimonial:hover::before {
+    opacity: 0.8;
+    transform: rotate(-8deg) scale(1.1);
+  }
+
+  /* Featured (taller) testimonial — first in row */
+  .testimonial.featured {
+    background: var(--moss);
+    color: var(--bone);
+    border-color: var(--moss);
+  }
+  .testimonial.featured::before {
+    color: var(--lime);
+    opacity: 0.6;
+  }
+  .testimonial.featured .testimonial-quote { color: var(--bone); }
+  .testimonial.featured .testimonial-name { color: var(--lime); }
+  .testimonial.featured .testimonial-meta { color: rgba(245,241,232,0.55); }
+  .testimonial.featured:hover { border-color: var(--lime); }
+
+  /* Lime accent variant */
+  .testimonial.accent {
+    background: var(--lime);
+    color: var(--moss);
+    border-color: var(--lime);
+  }
+  .testimonial.accent::before {
+    color: var(--moss);
+    opacity: 0.25;
+  }
+  .testimonial.accent .testimonial-quote { color: var(--moss); }
+  .testimonial.accent .testimonial-name { color: var(--moss); }
+  .testimonial.accent .testimonial-meta { color: rgba(15,42,29,0.65); }
+
+  .testimonial-stars {
+    color: var(--lime);
+    font-size: 14px;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial.accent .testimonial-stars { color: var(--moss); }
+  .testimonial-quote {
+    font-family: var(--display);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: var(--moss);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial.featured .testimonial-quote { font-size: 22px; }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--leaf);
+    color: var(--bone);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .testimonial.accent .testimonial-avatar {
+    background: var(--moss);
+    color: var(--lime);
+  }
+  .testimonial.featured .testimonial-avatar {
+    background: var(--lime);
+    color: var(--moss);
+  }
+  .testimonial-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--moss);
+    line-height: 1.2;
+  }
+  .testimonial-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--leaf);
+    margin-top: 4px;
+  }
+
+  /* Review platform badges */
+  .review-platforms {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 70px;
+    padding-top: 50px;
+    border-top: 1px solid rgba(15,42,29,0.08);
+  }
+  .review-platforms-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--leaf);
+    margin-right: 8px;
+  }
+  .platform-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid rgba(15,42,29,0.12);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--moss);
+    text-decoration: none;
+    transition: all 0.3s;
+    background: var(--bone);
+  }
+  .platform-badge:hover {
+    background: var(--moss);
+    color: var(--bone);
+    border-color: var(--moss);
+    transform: translateY(-2px);
+  }
+  .platform-badge .stars {
+    color: var(--lime);
+    font-size: 11px;
+  }
+  .platform-badge:hover .stars { color: var(--lime); }
+
   /* ============ AREAS ============ */
   .areas {
     padding: 140px 40px;
@@ -1830,6 +2091,7 @@
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#gallery">Work</a>
+    <a href="#testimonials">Reviews</a>
     <a href="#areas">Service Area</a>
     <a href="#contact">Contact</a>
   </div>
@@ -2045,6 +2307,127 @@
   <div class="gallery-cta-row reveal">
     <p>"Got a yard that needs the same treatment?"</p>
     <a href="#contact" class="btn-dark">Book a Walk-Through →</a>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-head reveal">
+      <div>
+        <div class="section-eyebrow">— Real People, Real Yards</div>
+        <h2 class="section-title">What the <em>neighbors</em> say.</h2>
+      </div>
+      <div class="rating-summary">
+        <div class="rating-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <div class="rating-text">
+          <span class="rating-num">4.9</span>
+          <div class="rating-label">127+ reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid reveal">
+      <!-- Featured (dark moss) -->
+      <div class="testimonial featured">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Alex transformed our backyard from a weedy mess into something out of a magazine. Fair pricing, showed up exactly when he said he would, and the stripe job on our lawn? Neighbors actually stopped by to ask who did it.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">Marcus T.</div>
+            <div class="testimonial-meta">Glendale Heights · Full Backyard Redesign</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard light -->
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Switched to Limitless for our weekly mowing last spring and never looking back. Clean edges, no missed spots, and the crew is genuinely nice. My wife keeps saying the lawn looks better than the country club.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div>
+            <div class="testimonial-name">David R.</div>
+            <div class="testimonial-meta">Wheaton · Weekly Lawn Care</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard light -->
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">The patio Alex built for us is unreal — pavers laid perfectly, walls dead level, and they finished a full week ahead of schedule. Already booked them for landscape design in the spring.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">J</div>
+          <div>
+            <div class="testimonial-name">Jennifer P.</div>
+            <div class="testimonial-meta">Naperville · Hardscaping</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard light -->
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Honestly the most reliable contractor we've worked with in DuPage. Snow removal at 5am every storm, never had to call once. Just shows up and does the work.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div>
+            <div class="testimonial-name">Robert K.</div>
+            <div class="testimonial-meta">Lombard · Snow Contract</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lime accent -->
+      <div class="testimonial accent">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Our lawn was patchy and brown for years. Two months with Alex and it's the thickest greenest yard on the block. He actually explains what he's doing and why — not just billing me for stuff.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <div class="testimonial-name">Sarah M.</div>
+            <div class="testimonial-meta">Carol Stream · Lawn Restoration</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Standard light -->
+      <div class="testimonial">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-quote">Hired them for fall cleanup and was so impressed I signed up for full-season maintenance. Beds look sharp, mulch is fresh, leaves gone in a few hours. Worth every dollar.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Amanda L.</div>
+            <div class="testimonial-meta">Bloomingdale · Fall Cleanup + Beds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-platforms reveal">
+      <span class="review-platforms-label">Reviewed on</span>
+      <a href="#" class="platform-badge">
+        Google
+        <span class="stars">★ 4.9</span>
+      </a>
+      <a href="#" class="platform-badge">
+        Yelp
+        <span class="stars">★ 5.0</span>
+      </a>
+      <a href="#" class="platform-badge">
+        Facebook
+        <span class="stars">★ 4.9</span>
+      </a>
+      <a href="#" class="platform-badge">
+        Nextdoor
+        <span class="stars">★ Neighborhood Fav</span>
+      </a>
+    </div>
   </div>
 </section>
 
